@@ -1,6 +1,7 @@
+#!/bin/bash
 conda create -n py37
 conda activate py37
 conda install python=3.7
 pip install -r requirements.txt
-
+python test_magneticfield/test_pbuf_esri.py
 
