@@ -1,0 +1,79 @@
+syntax = "proto2";
+
+package indoors.proto;
+
+message Sensor {
+
+    required double t = 1;
+    required double x = 2;
+    required double y = 3;
+    required double z = 4;
+    optional double accuracy = 5 [default = 1.0];
+
+}
+
+message Context {
+
+    required double t = 1;
+    required int64 identifier = 2;
+    required int64 confidence = 3;
+
+}
+
+message Pressure {
+
+    required double t = 1;
+    required double v = 2;
+
+}
+
+message Step {
+
+    required double t = 1;
+    required double length = 2;
+    required double length_error = 3;
+    optional double heading = 4;
+    optional double heading_error = 5;
+    optional double max_acc = 6;
+
+}
+
+enum RadioType {
+    WIFI = 0;
+    GSM = 1;
+    UKW = 2;
+    BLUETOOTH = 3;
+    BLUETOOTH_LE = 4;
+    IBEACON = 5;
+    UNDEFINED = 6;
+}
+
+message Radio {
+
+    required RadioType type = 1;
+    required double t = 2;
+    required string ssid = 3;
+    required int64 bssid = 4;
+    required int64 rssi = 5;
+
+}
+
+enum OrientationType {
+    DEVICE_ORIENTATION = 0;
+    PDR_ORIENTATION = 1;
+    KALMAN_ORIENTATION = 2;
+    FINAL_ORIENTATION = 3;
+}
+
+message Orientation {
+
+    required OrientationType type = 1;
+    optional double t = 2;
+    optional double roll = 3;
+    optional double roll_var = 4;
+    optional double pitch = 5;
+    optional double pitch_var = 6;
+    optional double yaw = 7;
+    optional double yaw_var = 8;
+
+}

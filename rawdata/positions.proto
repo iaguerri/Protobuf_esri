@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package indoors.proto;
+
+enum PositionType {
+    KNN = 0;
+    GROUND_TRUTH = 1;
+    FINAL = 2;
+    KALMAN = 3;
+    SLAM = 4;
+    FLIP = 5;
+    AKF = 6;
+    SLAM_GRID = 7;
+    SLAM_MAP = 9;
+    SLAM_GRAPH = 10;
+    GPS = 11;
+    RADIO_BLE = 12;
+    RADIO_WIFI = 13;
+    RADIO_WIFI_BLE = 14;
+    PROXIMITY = 15;
+    APPLE = 16;
+    SELECTED = 17;
+
+    UNKNOWN = 255;
+}
+
+message GlobalPosition {
+    required double t = 1;
+    required double latitude = 2;
+    required double longitude = 3;
+    optional double accuracy = 4;
+    optional double altitude = 5;
+    optional double altitude_accuracy = 6;
+    optional double speed = 7;
+    optional double speed_accuracy = 8;
+    optional double heading = 9;
+    optional double device_timestamp = 10;
+}
+
+message Position {
+    optional double t = 1 [deprecated=true];
+    optional double x = 2;
+    optional double y = 3;
+    optional int64 floor = 4;
+    optional double sx2 = 5;
+    optional double sy2 = 6;
+    optional double sxy = 7;
+    required PositionType type = 8;
+    optional double accuracy = 9;
+    optional double delay = 10;
+    optional double t_created = 11;
+    optional double t_est = 12;
+    optional PositionType ancestor = 13;
+}

@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package indoors.proto;
+
+enum LocatorEventType
+{
+    BUILDING_LOADED = 0;
+    FLIPMAP_GENERATED = 1;
+    NEW_LOCATOR_LOOP = 2;
+    KALMAN_INITIALIZED = 3;
+}
+
+message LocatorEvent
+{
+    required double t = 1;
+    required LocatorEventType type = 2;
+}

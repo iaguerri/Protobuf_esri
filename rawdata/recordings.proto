@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package indoors.proto;
+import "structures.proto";
+import "positions.proto";
+import "sensors.proto";
+import "locatorevents.proto";
+
+message Recording {
+
+    required int64 id = 1;
+    required int64 building = 2;
+    required double created_at = 3;
+    required double start = 4;
+    required double end = 5;
+
+    repeated NamedValue meta = 6;
+
+    repeated Sensor accelerations = 7;
+    repeated Sensor gyros = 8;
+    repeated Sensor magnetics = 9;
+    repeated Sensor rotations = 10 [deprecated = true];
+
+    repeated Pressure pressures = 11;
+    repeated Radio radios = 12;
+    repeated Step steps = 13;
+    repeated Context contexts = 14;
+
+    repeated Position positions = 15;
+    repeated GlobalPosition global_positions = 20;
+
+    repeated Orientation orientations = 21;
+
+    optional int64 parent = 22;
+
+    optional string device = 23;
+    optional string user_name = 24;
+
+    repeated LocatorEvent events = 25;
+}

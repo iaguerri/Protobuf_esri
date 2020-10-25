@@ -1,0 +1,6 @@
+protobuf
+read-protobuf
+pandas
+numpy
+matplotlib
+

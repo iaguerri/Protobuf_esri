@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package indoors.proto;
+
+message NamedValue {
+    required string name = 1;
+    required string value = 2;
+}
